@@ -1,4 +1,4 @@
-const en = {
+const pl = {
   common: {
     ok: "OK!",
     cancel: "Cancel",
@@ -29,6 +29,7 @@ const en = {
 
   errors: {
     invalidEmail: "Invalid email address.",
+    invalidEmailLength: "Wymagane min 6 znaków",
   },
   loginScreen: {
     signIn: "Logowanie",
@@ -38,7 +39,7 @@ const en = {
     passwordFieldLabel: "Password",
     emailFieldPlaceholder: "Enter your email address",
     passwordFieldPlaceholder: "Super secret password here",
-    tapToSignIn: "Tap to sign in!",
+    tapToSignIn: "Zaloguj",
     hint: "Hint: you can use any email address and your favorite password :)",
   },
   demoNavigator: {
@@ -121,5 +122,5 @@ const en = {
   },
 }
 
-export default en
-export type Translations = typeof en
+export default pl
+export type Translations = typeof pl
