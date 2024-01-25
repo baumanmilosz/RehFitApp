@@ -8,16 +8,17 @@ import { colors, spacing } from "../theme"
 
 const appLogo = require("../../assets/images/app-logo.png")
 
-interface LoginScreenProps extends AppStackScreenProps<"Login"> {}
+interface SignUpScreenProps extends AppStackScreenProps<"Login"> {}
 
-export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_props) {
+export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScreen(_props) {
   const { navigation } = _props
   const authPasswordInput = useRef<TextInput>(null)
 
-  const [authPassword, setAuthPassword] = useState("")
-  const [isAuthPasswordHidden, setIsAuthPasswordHidden] = useState(true)
+  const [authPassword, setAuthPassword] = useState("");
+  const [authConfirmPassword, setAuthConfirmPassword] = useState("");
+  const [isAuthPasswordHidden, setIsAuthPasswordHidden] = useState(true);
+  const [isAuthConfirmPasswordHidden, setIsAuthConfirmPasswordHidden] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [attemptsCount, setAttemptsCount] = useState(0)
   const {
     authenticationStore: { authEmail, setAuthEmail, setAuthToken, validationError },
   } = useStores()
@@ -35,16 +36,16 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
 
   const error = isSubmitted ? validationError : ""
 
-  function login() {
+  function signUp() {
     setIsSubmitted(true)
-    setAttemptsCount(attemptsCount + 1)
 
     if (validationError) return
 
     // Make a request to your server to get an authentication token.
     // If successful, reset the fields and set the token.
     setIsSubmitted(false)
-    setAuthPassword("")
+    setAuthPassword("");
+    setAuthConfirmPassword("");
     setAuthEmail("")
 
     // We'll mock this with a fake token.
@@ -65,19 +66,34 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         )
       },
     [isAuthPasswordHidden],
-  )
+  );
+
+  const ConfirmPasswordRightAccessory: ComponentType<TextFieldAccessoryProps> = useMemo(
+    () =>
+      function ConfirmPasswordRightAccessory(props: TextFieldAccessoryProps) {
+        return (
+          <Icon
+            icon={isAuthConfirmPasswordHidden ? "view" : "hidden"}
+            color={colors.palette.primary}
+            containerStyle={props.style}
+            size={20}
+            onPress={() => setIsAuthConfirmPasswordHidden(!isAuthConfirmPasswordHidden)}
+          />
+        )
+      },
+    [isAuthConfirmPasswordHidden],
+  );
 
   return (
     <Screen
       preset="auto"
-      contentContainerStyle={[$screenContentContainer, {flex: 1, backgroundColor: colors.palette.primary}]}
+      contentContainerStyle={[$screenContentContainer, { backgroundColor: colors.palette.primary}]}
       safeAreaEdges={["top", "bottom"]}
     >
       <View style={{alignItems: 'center'}}>
         <Image source={appLogo} style={{alignItems: 'center'}}/>
       </View>
-      <Text testID="login-heading" tx="loginScreen.signIn" style={$signIn} />
-      {attemptsCount > 2 && <Text tx="loginScreen.hint" size="sm" weight="light" style={$hint} />}
+      <Text testID="login-heading" tx="Zarejestruj się" style={$signIn} />
 
       <TextField
         value={authEmail}
@@ -103,23 +119,37 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
         labelTx="loginScreen.passwordFieldLabel"
-        onSubmitEditing={login}
+        onSubmitEditing={signUp}
         RightAccessory={PasswordRightAccessory}
+      />
+
+      <TextField
+        ref={authPasswordInput}
+        value={authConfirmPassword}
+        onChangeText={setAuthConfirmPassword}
+        containerStyle={$textField}
+        autoCapitalize="none"
+        autoComplete="confirmPassword"
+        autoCorrect={false}
+        secureTextEntry={isAuthConfirmPasswordHidden}
+        labelTx="loginScreen.confirmPasswordFieldLabel"
+        onSubmitEditing={signUp}
+        RightAccessory={ConfirmPasswordRightAccessory}
       />
 
       <Button
         testID="login-button"
-        tx="loginScreen.tapToSignIn"
+        tx="loginScreen.tapToSignUp"
         style={$tapButton}
         preset="reversed"
-        onPress={login}
+        onPress={signUp}
       />
       <Button
         testID="sign-up-button"
-        tx="loginScreen.tapToSignUp"
+        tx="Zaloguj się"
         style={$tapButton}
         preset="filled"
-        // onPress={() => navigation.navigate(Screens., {screen: "SignUp"})}
+        onPress={() => navigation.navigate("Login", {screen: "LoginScreen"})}
       />
     </Screen>
   )

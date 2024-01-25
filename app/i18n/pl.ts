@@ -41,6 +41,9 @@ const pl = {
     passwordFieldPlaceholder: "Super secret password here",
     tapToSignIn: "Zaloguj",
     hint: "Hint: you can use any email address and your favorite password :)",
+    tapToSignUp: 'Załóż konto'
+  },
+  signUpScreen: {
   },
   demoNavigator: {
     componentsTab: "Components",
