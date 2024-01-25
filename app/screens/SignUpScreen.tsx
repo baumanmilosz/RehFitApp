@@ -3,7 +3,7 @@ import React, { ComponentType, FC, useEffect, useMemo, useRef, useState } from "
 import { TextInput, TextStyle, ViewStyle, Image, View } from "react-native"
 import { Button, Icon, Screen, Text, TextField, TextFieldAccessoryProps } from "../components"
 import { useStores } from "../models"
-import { AppStackScreenProps } from "../navigators"
+import { AppStackScreenProps, navigate } from "../navigators"
 import { colors, spacing } from "../theme"
 
 const appLogo = require("../../assets/images/app-logo.png")
@@ -11,7 +11,6 @@ const appLogo = require("../../assets/images/app-logo.png")
 interface SignUpScreenProps extends AppStackScreenProps<"Login"> {}
 
 export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScreen(_props) {
-  const { navigation } = _props
   const authPasswordInput = useRef<TextInput>(null)
 
   const [authPassword, setAuthPassword] = useState("");
@@ -149,7 +148,14 @@ export const SignUpScreen: FC<SignUpScreenProps> = observer(function SignUpScree
         tx="Zaloguj się"
         style={$tapButton}
         preset="filled"
-        onPress={() => navigation.navigate("Login", {screen: "LoginScreen"})}
+        onPress={() => navigate("Login")}
+      />
+      <Button
+        testID="sign-up-button"
+        tx="Homepage"
+        style={$tapButton}
+        preset="filled"
+        onPress={() => navigate("Demo")}
       />
     </Screen>
   )
