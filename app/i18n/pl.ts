@@ -43,7 +43,8 @@ const pl = {
     hint: "Hint: you can use any email address and your favorite password :)",
     tapToSignUp: 'Załóż konto'
   },
-  signUpScreen: {
+  homepage: {
+    userLabel: "Witaj"
   },
   demoNavigator: {
     componentsTab: "Components",

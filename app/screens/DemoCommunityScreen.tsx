@@ -13,7 +13,7 @@ export const DemoCommunityScreen: FC<DemoTabScreenProps<"DemoCommunity">> =
         <View style={{flex: 1,  justifyContent: 'space-between', backgroundColor: colors.palette.secondary,   paddingHorizontal: spacing.lg,
           paddingVertical: spacing.lg,}}>
           <View>
-            <Text preset="heading" tx="Witaj Michał" style={$title}  size={'xl'}/>
+            <Text preset="heading" tx="homepage.userLabel" style={$title}  size={'xl'}/>
             <Text preset="heading" tx="Spożyte kalorie" style={$title} size={'xl'} />
             <Text preset="heading" tx="Spalone kalorie" style={$title} size={'xl'}/>
             <Text preset="heading" tx="Twoje BMI wynosi" style={$title} size={'xl'}/>
