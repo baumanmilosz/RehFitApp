@@ -39,6 +39,7 @@ import { colors, spacing } from "../theme"
 import { delay } from "../utils/delay"
 import { openLinkInBrowser } from "../utils/openLinkInBrowser"
 import { AuthBackgroundTemplate } from "app/components/AuthBackgroundTemplate"
+import { navigate } from "app/navigators"
 
 const ICON_SIZE = 14
 
@@ -212,7 +213,7 @@ const EpisodeCard = observer(function EpisodeCard({
   }
 
   const handlePressCard = () => {
-    openLinkInBrowser(episode.enclosure.link)
+    openLinkInBrowser('https://www.youtube.com/watch?v=RTYQSbHTwOg&ab_channel=budujmase.pl')
   }
 
   const ButtonLeftAccessory: ComponentType<ButtonAccessoryProps> = useMemo(
@@ -246,7 +247,7 @@ const EpisodeCard = observer(function EpisodeCard({
     <Card
       style={$item}
       verticalAlignment="force-footer-bottom"
-      onPress={handlePressCard}
+      onPress={() => navigate('CardDetailsScreen')}
       onLongPress={handlePressFavorite}
       HeadingComponent={
         <View style={$metadata}>
