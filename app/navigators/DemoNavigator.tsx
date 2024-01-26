@@ -45,6 +45,17 @@ export function DemoNavigator() {
       }}
     >
       <Tab.Screen
+        name="DemoPodcastList"
+        component={DemoPodcastListScreen}
+        options={{
+          tabBarAccessibilityLabel: translate("demoNavigator.podcastListTab"),
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="podcast" color={focused ? colors.palette.secondary : colors.palette.neutral100} size={30} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
         name="DemoShowroom"
         component={DemoShowroomScreen}
         options={{
@@ -64,16 +75,7 @@ export function DemoNavigator() {
         }}
       />
 
-      <Tab.Screen
-        name="DemoPodcastList"
-        component={DemoPodcastListScreen}
-        options={{
-          tabBarAccessibilityLabel: translate("demoNavigator.podcastListTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused ? colors.palette.secondary : colors.palette.neutral100} size={30} />
-          ),
-        }}
-      />
+
     </Tab.Navigator>
   )
 }
