@@ -44,8 +44,13 @@ const pl = {
     tapToSignUp: 'Załóż konto'
   },
   homepage: {
-    userLabel: "Witaj"
+    userLabel: "Witaj",
+    consumedCaloriesLabel: "Spożyte kalorie",
+    burnedCaloriesLabel: "Spalone kalorie",
+
+
   },
+ 
   demoNavigator: {
     componentsTab: "Components",
     debugTab: "Debug",
