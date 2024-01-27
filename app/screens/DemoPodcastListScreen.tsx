@@ -38,6 +38,8 @@ import { DemoTabScreenProps } from "../navigators/DemoNavigator"
 import { colors, spacing } from "../theme"
 import { delay } from "../utils/delay"
 import { openLinkInBrowser } from "../utils/openLinkInBrowser"
+import { AuthBackgroundTemplate } from "app/components/AuthBackgroundTemplate"
+import { navigate } from "app/navigators"
 
 const ICON_SIZE = 14
 
@@ -70,11 +72,7 @@ export const DemoPodcastListScreen: FC<DemoTabScreenProps<"DemoPodcastList">> = 
     }
 
     return (
-      <Screen
-        preset="fixed"
-        safeAreaEdges={["top"]}
-        contentContainerStyle={$screenContentContainer}
-      >
+    <AuthBackgroundTemplate>
         <ListView<Episode>
           contentContainerStyle={$listContentContainer}
           data={episodeStore.episodesForList.slice()}
@@ -134,7 +132,7 @@ export const DemoPodcastListScreen: FC<DemoTabScreenProps<"DemoPodcastList">> = 
             />
           )}
         />
-      </Screen>
+    </AuthBackgroundTemplate>
     )
   },
 )
@@ -215,7 +213,7 @@ const EpisodeCard = observer(function EpisodeCard({
   }
 
   const handlePressCard = () => {
-    openLinkInBrowser(episode.enclosure.link)
+    openLinkInBrowser('https://www.youtube.com/watch?v=RTYQSbHTwOg&ab_channel=budujmase.pl')
   }
 
   const ButtonLeftAccessory: ComponentType<ButtonAccessoryProps> = useMemo(
@@ -249,7 +247,7 @@ const EpisodeCard = observer(function EpisodeCard({
     <Card
       style={$item}
       verticalAlignment="force-footer-bottom"
-      onPress={handlePressCard}
+      onPress={() => navigate('CardDetailsScreen')}
       onLongPress={handlePressFavorite}
       HeadingComponent={
         <View style={$metadata}>
@@ -258,18 +256,22 @@ const EpisodeCard = observer(function EpisodeCard({
             size="xxs"
             accessibilityLabel={episode.datePublished.accessibilityLabel}
           >
-            {episode.datePublished.textLabel}
+            Biceps
+            {/*{episode.datePublished.textLabel}*/}
           </Text>
           <Text
             style={$metadataText}
             size="xxs"
             accessibilityLabel={episode.duration.accessibilityLabel}
           >
-            {episode.duration.textLabel}
+            Szacowany czas: 30 min
+            {/*{episode.duration.textLabel}*/}
           </Text>
         </View>
       }
-      content={`${episode.parsedTitleAndSubtitle.title} - ${episode.parsedTitleAndSubtitle.subtitle}`}
+      // content={`${episode.parsedTitleAndSubtitle.title} - ${episode.parsedTitleAndSubtitle.subtitle}`}
+      content={'Uginanie ramion hantlami/gumą'}
+      contentStyle={$contentText}
       {...accessibilityHintProps}
       RightComponent={<Image source={imageUri} style={$itemThumbnail} />}
       FooterComponent={
@@ -319,6 +321,7 @@ const $item: ViewStyle = {
   padding: spacing.md,
   marginTop: spacing.md,
   minHeight: 120,
+  backgroundColor: colors.palette.primary
 }
 
 const $itemThumbnail: ImageStyle = {
@@ -349,7 +352,12 @@ const $metadata: TextStyle = {
 }
 
 const $metadataText: TextStyle = {
-  color: colors.textDim,
+  color: colors.palette.secondary,
+  marginEnd: spacing.md,
+  marginBottom: spacing.xs,
+}
+const $contentText: TextStyle = {
+  color: colors.palette.neutral100,
   marginEnd: spacing.md,
   marginBottom: spacing.xs,
 }
@@ -379,4 +387,6 @@ const $emptyState: ViewStyle = {
 const $emptyStateImage: ImageStyle = {
   transform: [{ scaleX: isRTL ? -1 : 1 }],
 }
+
+
 // #endregion

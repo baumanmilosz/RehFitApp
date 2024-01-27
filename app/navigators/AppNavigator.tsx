@@ -20,6 +20,8 @@ import { useStores } from "../models"
 import { DemoNavigator, DemoTabParamList } from "./DemoNavigator"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
+import { CardDetailsScreenProps } from "app/screens/CardDetailsScreen"
+import { CardDetailsScreen } from "app/screens"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -72,6 +74,7 @@ const AppStack = observer(function AppStack() {
 
           <Stack.Screen name="SignUp" component={Screens.SignUpScreen} />
           <Stack.Screen name="Login" component={Screens.LoginScreen} />
+          <Stack.Screen name="CardDetailsScreen" component={CardDetailsScreen} />
           <Stack.Screen name="Demo" component={DemoNavigator} />
 
         </>

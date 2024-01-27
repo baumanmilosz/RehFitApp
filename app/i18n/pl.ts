@@ -109,10 +109,10 @@ const pl = {
       "If this doesn't work, ensure the Reactotron desktop app is running and reload app.",
   },
   demoPodcastListScreen: {
-    title: "React Native Radio episodes",
-    onlyFavorites: "Only Show Favorites",
-    favoriteButton: "Favorite",
-    unfavoriteButton: "Unfavorite",
+    title: "Lista cwiczen",
+    onlyFavorites: "Pokaż tylko ulubione",
+    favoriteButton: "Dodaj do ulubionych",
+    unfavoriteButton: "Usuń z ulubionych",
     accessibility: {
       cardHint:
         "Double tap to listen to the episode. Double tap and hold to {{action}} this episode.",
