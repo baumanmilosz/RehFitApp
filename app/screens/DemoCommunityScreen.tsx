@@ -13,12 +13,12 @@ export const DemoCommunityScreen: FC<DemoTabScreenProps<"DemoCommunity">> =
             <Text preset="heading" tx="homepage.userLabel" style={$title}  size={'xl'}/>
             <Text preset="heading" tx="homepage.consumedCaloriesLabel" style={$title} size={'xl'} />
             <Text preset="heading" tx="homepage.burnedCaloriesLabel" style={$title} size={'xl'}/>
-            <Text preset="heading" tx="Twoje BMI wynosi" style={$title} size={'xl'}/>
-            <Text preset="heading" tx={true ? 'Waga prawidłowa' : 'Waga nieprawidłowa!'} style={$title} size={'xl'}/>
+            <Text preset="heading" tx="homepage.bmiLabel" style={$title} size={'xl'}/>
+            <Text preset="heading" tx={true ? 'homepage.properWeightLabel' : 'homepage.weightIncorrectLabel!'} style={$title} size={'xl'}/>
           </View>
           <Button
             testID="login-button"
-            tx="Rozpocznij trening"
+            tx="homepage.startTreningButton"
             preset="reversed"
             onPress={() => null}
           />

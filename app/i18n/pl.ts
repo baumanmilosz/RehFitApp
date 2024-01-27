@@ -47,6 +47,11 @@ const pl = {
     userLabel: "Witaj",
     consumedCaloriesLabel: "Spożyte kalorie",
     burnedCaloriesLabel: "Spalone kalorie",
+    bmiLabel: "Twoje BMI wynosi: ",
+    properWeightLabel: "Waga prawidłowa",
+    weightIncorrectLabel: "Waga nieprawidłowa",
+    startTreningButton: "Rozpocznij trening",
+    
 
 
   },
