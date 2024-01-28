@@ -36,7 +36,7 @@ const pl = {
     enterDetails:
       "Enter your details below to unlock top secret info. You'll never guess what we've got waiting. Or maybe you will; it's not rocket science here.",
     emailFieldLabel: "Email",
-    passwordFieldLabel: "Password",
+    passwordFieldLabel: "Hasło",
     emailFieldPlaceholder: "Enter your email address",
     passwordFieldPlaceholder: "Super secret password here",
     tapToSignIn: "Zaloguj",
@@ -51,7 +51,7 @@ const pl = {
     properWeightLabel: "Waga prawidłowa",
     weightIncorrectLabel: "Waga nieprawidłowa",
     startTreningButton: "Rozpocznij trening",
-    
+
 
 
   },
